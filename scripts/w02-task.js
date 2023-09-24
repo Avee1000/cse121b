@@ -1,16 +1,11 @@
-/* W02-Task - Profile Home Page */
 
-/* Step 1 - Setup type tasks - no code required */
 
 /* Step 2 - Variables */
 let fullName = "Idahosa-Sunny";
-console.log(`Name: ${fullName}`);
-
 const currentYear = new Date();
 const year = currentYear.getFullYear();
-console.log(`${year}`);
-
 const profilePicture = 'images/me.jpg';
+
 const nameElement = document.getElementById('name');
 nameElement.innerHTML = `<strong>${fullName}</strong>`;
 
@@ -45,28 +40,13 @@ imageElement.setAttribute('src', profilePicture);
 imageElement.setAttribute('alt', `profile image of ${fullName}`);
 
 // Get a list of all stylesheets on the page and convert it to an array
-const stylesheets = [...document.styleSheets];
+// const stylesheets = [...document.styleSheets];
 
-// Use forEach to loop through the stylesheets
-stylesheets.forEach(function (stylesheet, index) {
-  // Print the href (URL) of the stylesheet
-  console.log(`Stylesheet ${index + 1} URL: ${stylesheet.href}`);
-});
-
-/* Step 3 - Element Variables */
-
-
-
-
-
-/* Step 4 - Adding Content */
-
-
-
-
-
-
-/* Step 5 - Array */
+// // Use forEach to loop through the stylesheets
+// stylesheets.forEach(function (stylesheet, index) {
+//   // Print the href (URL) of the stylesheet
+//   console.log(`Stylesheet ${index + 1} URL: ${stylesheet.href}`);
+// });
 
 
 
