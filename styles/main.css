@@ -118,6 +118,10 @@ footer {
     bottom: 0;
 }
 
+#places-lived {
+    padding-bottom: 50px;
+}
+
 /* Class Selectors */
 .active {
     border-bottom: 1px solid yellow;
