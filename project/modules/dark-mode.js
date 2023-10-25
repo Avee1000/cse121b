@@ -36,7 +36,6 @@ export const darkMode = () => {
 
         document.getElementById("body").style.backgroundImage = ""; 
 
-
     } else {
         document.getElementById("header").style.backgroundColor = "rgba(0, 0, 0, 0.8)";
 
@@ -84,6 +83,7 @@ export const darkMode = () => {
         mediaQuery.addEventListener("change", handleMediaQueryChange);
         
         handleMediaQueryChange(mediaQuery);
+
     }
     isDarkMode = !isDarkMode;
 }

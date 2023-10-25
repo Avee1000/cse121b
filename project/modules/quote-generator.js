@@ -32,12 +32,35 @@ export const displayRandomQuote = (said) => {
     h2.style.bottom = "55px";
     h2.style.color = "white";
 
-    const words = said[randomIndex].quote.split(' ');
-    if (words.length > 20 && words.length < 100) {
-        h2.style.fontSize = "18px";
-    } else if (words.length > 30 && words.length < 100) {
-        h2.style.fontSize = "11px";
-    }said
+   
+    
+    function handleMediaQueryChange(mediaQuery) {
+        if (mediaQuery.matches) {
+            const words = said[randomIndex].quote.split(' ');
+            if (words.length > 12) {
+                h2.style.fontSize = "3px";
+                h3.style,fontSize = "30%"
+            } else if (words.length > 30) {
+                h2.style.fontSize = "2px";
+            } else if (words.length > 40) {
+                h2.style.fontSize = "1px";
+            }
+        } else {
+            const words = said[randomIndex].quote.split(' ');
+            if (words.length > 20 && words.length < 100) {
+                h2.style.fontSize = "18px";
+            } else if (words.length > 30 && words.length < 100) {
+                h2.style.fontSize = "11px";
+            } else if (words.length > 40) {
+                h2.style.fontSize = "8px";
+            }
+        }
+    }
+    const mediaQuery = window.matchMedia("(max-width: 1000px)");
+    
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
+    
+    handleMediaQueryChange(mediaQuery);
 
     const h3 = document.createElement("h3");
     let autho = said[randomIndex].author;
@@ -52,7 +75,7 @@ export const displayRandomQuote = (said) => {
     h3.style.color = "white";
     h3.style.textAlign = "right";
     h3.style.position = "relative";
-    h3.style.bottom = "45px";
+    h3.style.bottom = "50px";
 
     const copyButton = document.getElementById("nav2");
     copyButton.addEventListener("click", function() {
@@ -68,7 +91,7 @@ export const displayRandomQuote = (said) => {
 };
 
 export const getQuotes = async () => {
-    const response = await fetch("https://dummyjson.com/quotes?limit=0&skip=10");
+    const response = await fetch("https://dummyjson.com/quotes?limit=0&skip=50");
 
     if (response.ok) {
         const jsonData = await response.json();
@@ -77,12 +100,17 @@ export const getQuotes = async () => {
     }
 };
 
+export const search = (said) => {
+
+}
+
+
 function copyQuoteToClipboard(text) {
     if (navigator.clipboard) {
         navigator.clipboard.writeText(text)
             .then(() => {
                 document
-                alert("Quote copied to clipboard.");
+                showAlert("Quote copied to clipboard.", 1000);
             })
             .catch(error => {
                 console.error("Failed to copy text. ");
@@ -99,8 +127,24 @@ function copyQuoteToClipboard(text) {
     }
 }
 
-function search() {
-    
+function showAlert(message, duration) {
+    const alertDiv = document.createElement("div");
+    alertDiv.id = "alert";
+    alertDiv.textContent = message;
+    alertDiv.style.position = "fixed";
+    alertDiv.style.bottom = "10px";
+    alertDiv.style.left = "50%";
+    alertDiv.style.transform = "translateX(-50%)";
+    alertDiv.style.backgroundColor = "#d4515c";
+    alertDiv.style.opacity = "0.8";
+    alertDiv.style.color = "white";
+    alertDiv.style.padding = "10px";
+    alertDiv.style.borderRadius = "20px";
+    alertDiv.style.fontFamily = "Belanosima"
+
+    document.body.appendChild(alertDiv);
+
+    setTimeout(() => {
+        document.body.removeChild(alertDiv);
+    }, duration);
 }
-
-
