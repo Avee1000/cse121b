@@ -7,9 +7,16 @@ export const darkMode = () => {
 
         const i = document.getElementById("home");
         i.style.color = ""
+
+        const  f= document.getElementById("home1");
+        f.style.color = ""
     
         const nav = document.getElementById("nav1");
         nav.style.backgroundColor = "";
+
+        document.getElementById("nav1").style.color = ""
+
+        document.getElementById("nav2").style.backgroundColor = ""
 
         document.getElementById("background1").style.backgroundColor = "";
 
@@ -30,13 +37,18 @@ export const darkMode = () => {
         document.getElementById("body").style.backgroundImage = ""; 
 
 
-
     } else {
         document.getElementById("header").style.backgroundColor = "rgba(0, 0, 0, 0.8)";
 
         document.getElementById("home").style.color = "white"
+
+        document.getElementById("nav2").style.backgroundColor = "black"
+
+        document.getElementById("home1").style.color = "white"
+
+        document.getElementById("nav1").style.backgroundColor = "black"
     
-        document.getElementById("nav1").style.backgroundColor = "black";
+        document.getElementById("nav1").style.color = "black";
 
         document.getElementById("background1").style.backgroundColor = "rgba(0, 0, 0, 0.9)";
 
@@ -50,13 +62,15 @@ export const darkMode = () => {
             button.style.color = "black"; 
         });
 
-        document.getElementById("footer").style.backgroundColor = "black";
+        document.getElementById("footer").style.backgroundColor = "rgba(0, 0, 0, 1.5)";
 
         document.getElementById("footer").style.color = "#F1FAEE";
 
         document.getElementById("body").style.backgroundImage = "url('https://avee1000.github.io/cse121b/project/images/black1.jpg')"; 
 
+        document.getElementById("body").style.backgroundSize = "120%";
 
+        document.getElementById("body").style.backgroundPosition = "center";
 
         
     }

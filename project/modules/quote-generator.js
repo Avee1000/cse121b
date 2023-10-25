@@ -23,10 +23,10 @@ export const displayRandomQuote = () => {
 
     console.log(quoteList);
     const randomIndex = Math.floor(Math.random() * quoteList.length);
-
+    const quoteText = quoteList[randomIndex].quote;
 
     const h2 = document.createElement("h2");
-    h2.innerHTML = `<p><strong> "${quoteList[randomIndex].quote}"</strong></p>`;
+    h2.innerHTML = `<p><strong> "${quoteText}"</strong></p>`;
     h2.style.textAlign = "center";
     h2.style.position = "relative";
     h2.style.bottom = "55px";
@@ -54,23 +54,17 @@ export const displayRandomQuote = () => {
     h3.style.position = "relative";
     h3.style.bottom = "45px";
 
-
-    const icon = document.createElement("i");
-    icon.classList.add("fa-sharp", "fa-solid", "fa-clipboard", "fa-3x");
-    icon.style.color = "black";
-    icon.style.position = "absolute"; 
-
-
-    const button = document.createElement("button");
-    button.append(icon);
+    const copyButton = document.getElementById("nav2");
+    copyButton.addEventListener("click", function() {
+        copyQuoteToClipboard(quoteText);
+    });
 
     const art = blackBox();
     art.innerHTML = '';
     art.append(h2, h3);
-    art.appendChild(button);
  
     quoteElement.querySelector("article").replaceWith(art);
-    // quoteElement.innerHTML = ''; // Clear the previous quote
+    // quoteElement.innerHTML = ''; 
 };
 
 export const getQuotes = async () => {
@@ -83,3 +77,27 @@ export const getQuotes = async () => {
         displayRandomQuote();
     }
 };
+
+function copyQuoteToClipboard(text) {
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(text)
+            .then(() => {
+                document
+                alert("Quote copied to clipboard.");
+            })
+            .catch(error => {
+                console.error("Failed to copy text. ");
+            });
+    } else {
+
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+        alert("Quote copied to clipboard." );
+    }
+}
+
+
