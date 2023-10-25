@@ -13,11 +13,9 @@
 body {
     background-image: url('https://avee1000.github.io/cse121b/project/images/white.jpg'); 
     background-repeat: no-repeat;
-    background-size: 100%; /* Adjust the background-size property as needed */
-    background-repeat: no-repeat; /* Prevent the background image from repeating */
-    background-position: center; /* Center the background image */
-    /* height: 100vh;
-    min-height: 150px; */
+    background-size: 100%; 
+    background-repeat: no-repeat; 
+    background-position: center; 
 }
 
 header {
@@ -52,6 +50,34 @@ header {
 #nav2:hover{
     cursor: pointer;
 }
+
+input, label {
+    display: inline-block;
+    margin: 0.4rem 0;
+    bottom: 50px;
+    padding-left:5px;
+    padding-top: 5px;
+}
+
+#site-search{
+    box-sizing: border-box;
+    background-color: #F1FAEE;
+    border-radius: 5px;
+    font-family: "Belanosima", serif, Arial;
+    font-size: large;
+    text-align: justify;
+}
+
+#search{
+    background-color: #25418f;
+    color:#F1FAEE;
+    font-family: "Belanosima", serif, Arial;
+    border-radius: 5px;
+    padding-top: 4px;
+    font-size: larger;
+    cursor: pointer;
+}
+
 
 #background1 {
     display: grid;
@@ -125,4 +151,14 @@ footer {
     margin-top: 25px;
     background-color: rgb(174, 174, 174);
     opacity: 0.8;
+}
+
+@media screen and (max-width: 900px) {
+    body {
+        background-image: url('https://avee1000.github.io/cse121b/project/images/whitephone.jpg'); 
+        background-repeat: no-repeat;
+        background-size: 100%; 
+        background-repeat: no-repeat; 
+        background-position: center; 
+    }
 }

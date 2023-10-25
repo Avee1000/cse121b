@@ -72,12 +72,19 @@ export const darkMode = () => {
 
         document.getElementById("body").style.backgroundPosition = "center";
 
+        function handleMediaQueryChange(mediaQuery) {
+            if (mediaQuery.matches) {
+                document.getElementById("body").style.backgroundImage = "url('https://avee1000.github.io/cse121b/project/images/darkphone.jpg')"; 
+            } else {
+                document.getElementById("body").style.backgroundImage = "url('https://avee1000.github.io/cse121b/project/images/black1.jpg')"; 
+            }
+        }
+        const mediaQuery = window.matchMedia("(max-width: 900px)");
         
+        mediaQuery.addEventListener("change", handleMediaQueryChange);
+        
+        handleMediaQueryChange(mediaQuery);
     }
-
     isDarkMode = !isDarkMode;
-
-    console.log("Click");
-
 }
 

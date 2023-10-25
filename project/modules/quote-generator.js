@@ -1,5 +1,5 @@
 export const quoteElement = document.getElementById("quotes");
-export let quoteList = {};
+export let quoteList = [];
 
 export const blackBox = () => {
     
@@ -19,11 +19,11 @@ export const blackBox = () => {
     return article;
 }
 
-export const displayRandomQuote = () => {
+export const displayRandomQuote = (said) => {
 
-    console.log(quoteList);
-    const randomIndex = Math.floor(Math.random() * quoteList.length);
-    const quoteText = quoteList[randomIndex].quote;
+    console.log(said);
+    const randomIndex = Math.floor(Math.random() * said.length);
+    const quoteText = said[randomIndex].quote;
 
     const h2 = document.createElement("h2");
     h2.innerHTML = `<p><strong> "${quoteText}"</strong></p>`;
@@ -32,15 +32,15 @@ export const displayRandomQuote = () => {
     h2.style.bottom = "55px";
     h2.style.color = "white";
 
-    const words = quoteList[randomIndex].quote.split(' ');
+    const words = said[randomIndex].quote.split(' ');
     if (words.length > 20 && words.length < 100) {
         h2.style.fontSize = "18px";
     } else if (words.length > 30 && words.length < 100) {
         h2.style.fontSize = "11px";
-    }
+    }said
 
     const h3 = document.createElement("h3");
-    let autho = quoteList[randomIndex].author;
+    let autho = said[randomIndex].author;
     // if (autho === "type.fit") {
     //     autho = "Anonymous";
     // }
@@ -73,8 +73,7 @@ export const getQuotes = async () => {
     if (response.ok) {
         const jsonData = await response.json();
         quoteList = jsonData.quotes;
-
-        displayRandomQuote();
+        displayRandomQuote(quoteList);
     }
 };
 
@@ -98,6 +97,10 @@ function copyQuoteToClipboard(text) {
         document.body.removeChild(textArea);
         alert("Quote copied to clipboard." );
     }
+}
+
+function search() {
+    
 }
 
 
