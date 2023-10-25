@@ -1,4 +1,4 @@
-const url = 'https://pokeapi.co/api/v2/pokemon/ditto';
+const url = 'https://superhero-search.p.rapidapi.com/api/heroes';
 let results = null;
 async function getPokemon(url) {
     const response = await fetch(url);
@@ -15,4 +15,4 @@ function doStuff(data) {
 }
 
 getPokemon(url);
-console.log("second: ", + results);
+console.log("second: ", + results)

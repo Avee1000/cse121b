@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <!-- <link rel="stylesheet" href="css/fontawesome.css"> -->
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <link rel="stylesheet" href="css/brands.css">
+    <link rel="stylesheet" href="css/solid.css">
+
+</head>
+<body id="body">
+    <div id="content">
+        <header id="header">
+            <button id="nav1" href="index.html" "><i id="home" class="fa-solid fa-moon fa-3x fa-beat-fade" style="color: black;" ></i></button>
+        </header>
+            <main>
+                <div id="background1">
+                    <div id="background2">
+                        <!-- We shall append a child element here (article) -->
+                        <div id="quotes">
+                            <div class="container">
+                                <button id="button" type="click">Generate a quote</button>    
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+
+        <footer id="footer">
+            &copy; Idahosa-Sunny<span id="year"></span> | CSE 121b | Project
+        </footer>
+        <script>
+            document.getElementById("year").innerHTML = new Date().getFullYear();
+        </script>
+        <script src="quote.js" type="module"></script>
+        <script src="modules/quote-generator.js"  type="module" ></script>
+        <script src="modules/dark-mode.js"  type="module" ></script>
+    </div>
+</body>
+</html>
