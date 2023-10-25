@@ -19,11 +19,11 @@ export const blackBox = () => {
     return article;
 }
 
-export const displayRandomQuote = (said) => {
+export const displayRandomQuote = (quotes) => {
 
-    console.log(said);
-    const randomIndex = Math.floor(Math.random() * said.length);
-    const quoteText = said[randomIndex].quote;
+    console.log(quotes);
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    const quoteText = quotes[randomIndex].quote;
 
     const h2 = document.createElement("h2");
     h2.innerHTML = `<p><strong> "${quoteText}"</strong></p>`;
@@ -36,17 +36,16 @@ export const displayRandomQuote = (said) => {
     
     function handleMediaQueryChange(mediaQuery) {
         if (mediaQuery.matches) {
-            const words = said[randomIndex].quote.split(' ');
+            const words = quotes[randomIndex].quote.split(' ');
             if (words.length > 12) {
-                h2.style.fontSize = "3px";
-                h3.style,fontSize = "30%"
+                h2.style.fontSize = "18px";
             } else if (words.length > 30) {
-                h2.style.fontSize = "2px";
+                h2.style.fontSize = "11px";
             } else if (words.length > 40) {
-                h2.style.fontSize = "1px";
+                h2.style.fontSize = "8px";
             }
         } else {
-            const words = said[randomIndex].quote.split(' ');
+            const words = quotes[randomIndex].quote.split(' ');
             if (words.length > 20 && words.length < 100) {
                 h2.style.fontSize = "18px";
             } else if (words.length > 30 && words.length < 100) {
@@ -63,7 +62,7 @@ export const displayRandomQuote = (said) => {
     handleMediaQueryChange(mediaQuery);
 
     const h3 = document.createElement("h3");
-    let autho = said[randomIndex].author;
+    let autho = quotes[randomIndex].author;
     // if (autho === "type.fit") {
     //     autho = "Anonymous";
     // }
@@ -87,7 +86,7 @@ export const displayRandomQuote = (said) => {
     art.append(h2, h3);
  
     quoteElement.querySelector("article").replaceWith(art);
-    // quoteElement.innerHTML = ''; 
+    
 };
 
 export const getQuotes = async () => {
@@ -100,9 +99,27 @@ export const getQuotes = async () => {
     }
 };
 
-export const search = (said) => {
+const search = () => {
+    const searchInput = document.getElementById("site-search").value;
+    const matchingQuotes = quoteList.filter(quote => quote.author.toLowerCase().includes(searchInput.toLowerCase()));
 
+    if (quoteList.length === 0) {
+        alert("Please generate at least one quote first before searching.");
+        return;
+    }
+
+
+    if (matchingQuotes.length > 0) {
+        displayRandomQuote(matchingQuotes);
+    } else {
+        showAlert("No such Author with any Quote", 1000);
+        displayRandomQuote();
+    }
 }
+
+document.getElementById("search").addEventListener("click", () => {
+    search();
+})    
 
 
 function copyQuoteToClipboard(text) {
@@ -113,7 +130,7 @@ function copyQuoteToClipboard(text) {
                 showAlert("Quote copied to clipboard.", 1000);
             })
             .catch(error => {
-                console.error("Failed to copy text. ");
+                console.error("Failed to copy text.");
             });
     } else {
 

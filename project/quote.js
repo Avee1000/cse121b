@@ -10,3 +10,5 @@ blackBox();
 document.querySelector("#nav1").addEventListener("click", () => {
     darkMode();
 })
+
+
