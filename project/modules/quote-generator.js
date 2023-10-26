@@ -113,7 +113,6 @@ const search = () => {
         displayRandomQuote(matchingQuotes);
     } else {
         showAlert("No such Author with any Quote", 1000);
-        displayRandomQuote();
     }
 }
 
